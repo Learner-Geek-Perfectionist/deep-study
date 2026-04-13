@@ -245,7 +245,7 @@ python3 deep-study/scripts/validate-study.py study/<topic>
 
 1. 固定文件树完整存在
 2. 固定二级标题完整存在
-3. 最小条目数达到要求
+3. 条目使用规定的三级标题前缀
 4. 每个阶段文件都有 Mermaid 图
 5. 引用符合材料类型
 6. `python3 deep-study/scripts/validate-study.py study/<topic>` 退出码为 `0`
