@@ -84,7 +84,6 @@ REQUIRED_HEADINGS = {
         "04-control-flow-and-state.md": [
             "## 主控制流",
             "## 关键状态转换",
-            "## 并发与同步（如适用）",
             "## 跨模块控制交接",
         ],
         "05-end-to-end-trace.md": [

@@ -1,6 +1,6 @@
 ---
 name: source
-description: 对源码实现进行系统性深度分析，用于学习、研究和源码理解
+description: 当用户明确要求对源码实现做完整深度分析时使用，用于学习、研究和源码理解
 ---
 
 # Deep Study — 源码实现
