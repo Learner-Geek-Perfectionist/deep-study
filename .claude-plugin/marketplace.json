@@ -1,0 +1,18 @@
+{
+  "name": "deep-study-marketplace",
+  "owner": {
+    "name": "ouyangzhaoxin"
+  },
+  "plugins": [
+    {
+      "name": "deep-study",
+      "description": "系统性深度研究 skill 集合，覆盖源码分析、协议规范和编程语言机制",
+      "source": "./",
+      "skills": [
+        "./skills/source",
+        "./skills/protocol",
+        "./skills/language"
+      ]
+    }
+  ]
+}
