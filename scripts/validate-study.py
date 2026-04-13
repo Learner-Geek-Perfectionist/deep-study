@@ -84,15 +84,14 @@ REQUIRED_HEADINGS = {
         ],
         "03-mechanisms.md": [
             "## 机制列表",
-            "## 机制一",
-            "## 机制二",
+            "## 机制详述",
             "## 机制之间如何协作",
             "## 设计约束与 Trade-off",
         ],
         "04-control-flow-and-state.md": [
             "## 主控制流",
             "## 关键状态转换",
-            "## 并发与同步点",
+            "## 并发与同步（如适用）",
             "## 跨模块控制交接",
         ],
         "05-end-to-end-trace.md": [
@@ -256,7 +255,13 @@ REQUIRED_HEADINGS = {
 }
 
 MIN_ENTRY_RULES = {
-    "source": {},
+    "source": {
+        "01-core-data-structures.md": ("### 结构：", 1),
+        "02-core-functions.md": ("### 函数：", 1),
+        "03-mechanisms.md": ("### 机制：", 1),
+        "05-end-to-end-trace.md": ("### 场景：", 1),
+        "06-failure-and-edge-cases.md": ("### 条目：", 1),
+    },
     "protocol": {
         "03-message-formats.md": ("### 格式：", 5),
         "04-state-machines.md": ("### 状态：", 5),

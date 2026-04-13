@@ -77,15 +77,14 @@ REQUIRED_HEADINGS = {
         ],
         "03-mechanisms.md": [
             "## 机制列表",
-            "## 机制一",
-            "## 机制二",
+            "## 机制详述",
             "## 机制之间如何协作",
             "## 设计约束与 Trade-off",
         ],
         "04-control-flow-and-state.md": [
             "## 主控制流",
             "## 关键状态转换",
-            "## 并发与同步点",
+            "## 并发与同步（如适用）",
             "## 跨模块控制交接",
         ],
         "05-end-to-end-trace.md": [
@@ -249,7 +248,13 @@ REQUIRED_HEADINGS = {
 }
 
 MIN_ENTRY_RULES = {
-    "source": {},
+    "source": {
+        "01-core-data-structures.md": ("### 结构：", 1),
+        "02-core-functions.md": ("### 函数：", 1),
+        "03-mechanisms.md": ("### 机制：", 1),
+        "05-end-to-end-trace.md": ("### 场景：", 1),
+        "06-failure-and-edge-cases.md": ("### 条目：", 1),
+    },
     "protocol": {
         "03-message-formats.md": ("### 格式：", 5),
         "04-state-machines.md": ("### 状态：", 5),
@@ -344,6 +349,17 @@ class ValidateSourceTests(unittest.TestCase):
             )
             errors = module.validate_study(study_dir)
             self.assertTrue(any("## 不变量" in e for e in errors))
+
+    def test_empty_entries_fails(self):
+        module = load_validator_module()
+        with tempfile.TemporaryDirectory() as tmpdir:
+            study_dir = Path(tmpdir)
+            make_valid_study(study_dir, "source")
+            # Rewrite 01 with headings and mermaid but zero ### 结构： entries
+            headings = REQUIRED_HEADINGS["source"]["01-core-data-structures.md"]
+            write_markdown(study_dir / "01-core-data-structures.md", headings, mermaid=True, entry_prefix=None, entry_count=0)
+            errors = module.validate_study(study_dir)
+            self.assertTrue(any("01-core-data-structures.md" in e and "结构：" in e for e in errors))
 
     def test_missing_mermaid_fails(self):
         module = load_validator_module()
